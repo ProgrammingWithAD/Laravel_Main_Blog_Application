@@ -48,10 +48,10 @@
         <ul class="metismenu list-unstyled" id="side-menu">
        
 
-        <li> <a href="dashboard"><i data-feather="home"></i><span data-key="t-cab">Dashboard</span></a></li>
-        <li> <a href="blog-add"><i data-feather="plus-circle"></i><span data-key="t-blog-add">Blog Add</span></a></li> 
-        <li> <a href="blog-list"><i data-feather="list"></i><span data-key="t-blog-list">Blog List</span></a></li>
-        <li> <a href="category"><i data-feather="bookmark"></i><span data-key="t-cat-list">Blog Category</span></a></li>
+        <li> <a href="{{route('dashboard')}}"><i data-feather="home"></i><span data-key="t-cab">Dashboard</span></a></li>
+        <li> <a href="{{route('blog-add')}}"><i data-feather="plus-circle"></i><span data-key="t-blog-add">Blog Add</span></a></li> 
+        <li> <a href="{{route('blog-list')}}"><i data-feather="list"></i><span data-key="t-blog-list">Blog List</span></a></li>
+        <li> <a href="{{route('category')}}"><i data-feather="bookmark"></i><span data-key="t-cat-list">Blog Category</span></a></li>
 
 
 

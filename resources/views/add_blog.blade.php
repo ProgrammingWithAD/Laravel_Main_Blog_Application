@@ -13,29 +13,30 @@
                                 <h3>Add Blog</h3>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('blog-add') }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ isset($blog) && !empty($blog) ? route('blog.update', $blog->id) : route('blog-add') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <label for="">Blog Title</label>
-                                            <input type="text" name="blog_title" id="blog_title" class="form-control">
+                                            <label for="">Blog Title 
+                                               </label>
+                                            <input type="text" name="blog_title" id="blog_title" class="form-control" value="{{ $blog->blog_title ?? '' }}">
                                         
                                         </div>
                                         <div class="col-md-12">
                                             <label for="">Blog Url</label>
-                                            <input type="url" name="url" id="url" class="form-control" readonly>
+                                            <input type="url" name="url" id="url" class="form-control" value="{{ (isset($blog->url))?$blog->url:'' }}" readonly>
                                         </div>
                                         <div class="col-md-12">
                                             <label for="">Blog Content</label>
-                                            <textarea name="blog_content" id="blog_content" class="form-control ckeditor" cols="30" rows="10"></textarea>
+                                            <textarea name="blog_content" id="blog_content" class="form-control ckeditor" cols="30" rows="10">{{ (isset($blog->blog_content))?$blog->blog_content:'' }}</textarea>
                                         </div>
                                         <div class="col-md-4">
                                             <label for="">Status</label>
                                             <select name="blog_status" id="blog_status" class="form-select">
                                                 <option value="">Select Status</option>
-                                                <option value="0">Draft</option>
-                                                <option value="1">Public</option>
-                                                <option value="2">Private</option>
+                                                <option value="0" {{ (isset($blog->blog_status)&&$blog->blog_status==0)?'selected':''}}>Draft</option>
+                                                <option value="1" {{ (isset($blog->blog_status)&&$blog->blog_status==1)?'selected':''}}>Public</option>
+                                                <option value="2" {{ (isset($blog->blog_status)&&$blog->blog_status==2)?'selected':''}}>Private</option>
                                             </select>
                                         </div>
                                         <div class="col-md-4">
@@ -49,7 +50,7 @@
 
                                                 @foreach ($field_fetch as $item)
                                                     @php
-                                                        $selected =isset($row->blog_category) && in_array($item->id,explode(',', $row->blog_category))? 'selected': '';
+                                                        $selected =isset($blog->blog_category) && in_array($item->id,explode(',', $blog->blog_category))? 'selected': '';
                                                     @endphp
                                                     <option value="{{ $item->id }}" {{$selected}}>{{ $item->category }}</option>
                                                 @endforeach
@@ -60,9 +61,9 @@
                                             <label for="">Thumbnail Image</label>
                                             <input type="file" name="blog_thumbnail" id="blog_thumbnail"
                                                 class="form-control">
-                                            <input type="hidden" name="old_thumb_img" id="old_thumb_img" value="{{ isset($row->blog_thumbnail) ? $row->blog_thumbnail : '' }}">
+                                            <input type="hidden" name="old_thumb_img" id="old_thumb_img" value="{{ isset($blog->blog_thumbnail) ? $blog->blog_thumbnail : '' }}">
                                             <div class="prev_img">
-                                                <a href=""> <img src="" alt="" height="50px"></a>
+                                                <a href="{{ isset($blog->blog_thumbnail) ? asset($blog->blog_thumbnail) : '' }}"> <img src="{{ isset($blog->blog_thumbnail) ? asset($blog->blog_thumbnail) : '' }}" alt="" height="50px"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-12 text-center">

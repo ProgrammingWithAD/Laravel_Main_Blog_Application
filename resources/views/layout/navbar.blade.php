@@ -11,15 +11,24 @@
                     <a class="nav-link active" href="/" aria-current="page">Home
                         <span class="visually-hidden">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
+                
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        aria-haspopup="true" aria-expanded="false">Category</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownId">
-                        <a class="dropdown-item" href="#">Action 1</a>
-                        <a class="dropdown-item" href="#">Action 2</a>
+
+                        @php
+                        //$data = DB::table('my_table')->get(); // Fetch data using query builder
+                        $field_fetch = App\Models\Category::all(); // Or you can use Eloquent:
+                    @endphp
+
+                    @foreach ($field_fetch as $item)
+                        
+                        <a class="dropdown-item" href="{{url('category',$item->id)}}">{{$item->category}}</a>
+                        {{-- <option value="{{ $item->id }}" {{$selected}}>{{ $item->category }}</option> --}}
+                    @endforeach
+                        {{-- <a class="dropdown-item" href="#">Action 1</a>
+                        <a class="dropdown-item" href="#">Action 2</a> --}}
                     </div>
                 </li>
             </ul>
@@ -34,7 +43,7 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   <li><a class="dropdown-item" href="{{route('dashboard')}}">Dashboard</a></li>
-                  <li><a class="dropdown-item" href="#">Account Settings</a></li>
+                  <li><a class="dropdown-item" href="{{route('dashboard')}}">Account Settings</a></li>
                   <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
                 </ul>
               </div>

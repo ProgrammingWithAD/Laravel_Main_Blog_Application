@@ -17,7 +17,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table id="datatable" class="table table-striped table-bordered">
-                                    
+                                    <img src="" alt="">
                                 </table>
                                 </div>
                         </div>
