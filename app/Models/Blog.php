@@ -10,6 +10,13 @@ class Blog extends Model
     use HasFactory;
 
     protected $fillable = ['blog_title', 'url', 'blog_content', 'blog_status', 'blog_category', 'blog_thumbnail', 'user_id'];
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'blog_category_mapings', 'blog_id', 'category_id');
+    }
+
+
 }
 
 

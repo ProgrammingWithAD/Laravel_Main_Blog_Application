@@ -14,13 +14,13 @@
                                 <h4>Add Category</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('category') }}" method="post">
+                                <form action="{{ isset($blog) && !empty($blog) ? route('category.update', $blog->id) : route('category') }}" method="post">
                                     <div class="row g-3">
 
                                         @csrf
                                         <div class="col-md-12 ">
                                             <label for="">Category</label>
-                                            <input type="text" name="category" id="category" class="form-control">
+                                            <input type="text" name="category" id="category" class="form-control" value="{{ $blog->category ?? '' }}">
                                         </div>
                                         <div class="col-md-12 text-center">
                                             <button type="submit" class="btn btn-primary"><i
@@ -40,15 +40,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table id="datatable" class="table table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Blog Title</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- DataTable will populate table body dynamically -->
-                                    </tbody>
+                                    
                                 </table>
                                 </div>
                         </div>
@@ -92,10 +84,34 @@
                             data: 'category',
                             title: 'Blog Category',
                             orderable: false
-                        }
+                        },
+                        {
+                    data: 'action',
+                    title: 'Action',
+                    orderable: false,
+                    width: '5%',
+                }
                     ]
                 });
             });
+
+
+            function delete_row(id){
+                
+                $.dhConfirm({
+                  dhContent: "Are you sure to Delete ?",
+                  dhUrl: "{{ route('category.delete', ['id' => ':id']) }}".replace(':id', id), 
+                 
+                  // This code will be executed after the deletion is confirmed.
+                  // You should reload the DataTable here.
+                  
+             
+                });
+              //   console.log("fdvgsdfgsg");
+              //     $('#table1').DataTable().destroy();
+              //     $('#table1').DataTable().draw();
+              //     $('#datatable').DataTable().ajax.reload();
+              }
 </script>
         
 @endsection
