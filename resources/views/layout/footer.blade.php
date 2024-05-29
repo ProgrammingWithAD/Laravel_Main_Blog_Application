@@ -1,6 +1,6 @@
 <footer class="footer">
-    <div class="container-fluid">
-      <?php /*echo '<h5 style="background-color: #3df110;color: #000;">&nbsp; Next =>
+  <div class="container-fluid">
+    <?php /*echo '<h5 style="background-color: #3df110;color: #000;">&nbsp; Next =>
           <b> http://192.168.29.69/trip-cart-package/master-list-activity-rate</b> <small>->Edit</small>
       </h5>'; ?>
   
@@ -10,24 +10,19 @@
         &nbsp;  <b> http://192.168.29.69/trip-cart-package/voucher-package-list</b> <small>->Filter by vendor</small><br>
         &nbsp;  <b> http://192.168.29.69/trip-cart-package/voucher-flight-list</b> <small>->Filter by vendor & Details(SelectBox)</small>
       </h5>';*/ ?>
-  
-      <div class="row">
-      <div class="col-sm-6"> <?=date('Y')?>  ©  LaraBlog </div>
+
+    <div class="row">
+      <div class="col-sm-6"> <?= date('Y') ?> © WEBlog </div>
       <div class="col-sm-6">
         <div class="text-sm-end d-none d-sm-block">
-        <a href="https://webihqsolutions.in/" target="_blank" class="text-secondary font-weight-bold">WEBI-HQ Solutions</a>
+          <h6>ADS</h6>
         </div>
       </div>
-      </div>
     </div>
-  </footer>
-  
-  <!-- end main content-->
-  
-  
-  <!-- END layout-wrapper -->
-  
+  </div>
+</footer>
+
+<!-- end main content-->
 
 
-  
-
+<!-- END layout-wrapper -->

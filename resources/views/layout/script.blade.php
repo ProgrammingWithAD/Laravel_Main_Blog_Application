@@ -3,8 +3,8 @@
   <script src="{{asset('libs/jquery-ui/jquery-ui.js')}}"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
-  
-  
+
+
   <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('libs/metismenu/metisMenu.min.js')}}"></script>
   <script src="{{asset('libs/simplebar/simplebar.min.js')}}"></script>
@@ -14,14 +14,15 @@
   <script src="{{asset('libs/pace-js/pace.min.js')}}"></script>
   <script src="{{asset('js/app.js?v=1.1')}}"></script>
   <script src="{{asset('js/dhScript.js?v=1.1')}}"></script>
-  
-  
+
+
   <script src="{{asset('libs/select2_4.1/select2.min.js?v=1.1')}}"></script>
- 
+
   <script type="text/javascript">
-      initializeSelect2();
-      function initializeSelect2(destroy = false){
-        /* if(destroy){
+    initializeSelect2();
+
+    function initializeSelect2(destroy = false) {
+      /* if(destroy){
   
               $("form-select").each(function(index){
                     $(this).select2('destroy');
@@ -42,15 +43,15 @@
                       });
               });
             } */
-      }
-  
-      // $(document).on('select2:open', () => {
-      //     document.querySelector('.select2-search__field').focus();
-      // });
+    }
+
+    // $(document).on('select2:open', () => {
+    //     document.querySelector('.select2-search__field').focus();
+    // });
   </script>
   <script>
-    @if (session('success'))
-$.notify("{{ session('success')}}", "success");
+    @if(session('success'))
+    $.notify("{{ session('success')}}", "success");
 
-@endif
-</script>
+    @endif
+  </script>
